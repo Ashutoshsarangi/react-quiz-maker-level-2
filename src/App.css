@@ -1,0 +1,26 @@
+.questionContainer__options {
+  border: 1px solid;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.questionContainer__options:hover {
+  background-color: green;
+  color: white;
+}
+
+.active {
+  background-color: green;
+  color: white;
+}
+
+.wrong__answer {
+  background-color: red;
+  color: white;
+}
+
+.right__answer {
+  background-color: green;
+  color: white;
+}
