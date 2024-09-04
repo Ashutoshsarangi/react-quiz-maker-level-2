@@ -5,6 +5,12 @@ import {
   CSS_WRONG_ANSWER,
 } from "../App.constants";
 
+/**
+ *
+ * @param {*} len, Here I am trying to make dynamic, where we get the random numbers with in the range
+ * @returns
+ * the random nos / indexes
+ */
 const get2Index = (len) => {
   const indexes = [];
   while (indexes.length !== 2) {
@@ -16,6 +22,14 @@ const get2Index = (len) => {
   return indexes;
 };
 
+/**
+ *
+ * @param {*} arr, Here we will get all the options
+ * to make it dynamic I am using an function which will return 2 indexes (Random)
+ * and I will swap these 2 index position in the array.
+ * as the indexes are always dynamic so the array will be dynamic position the answer
+ * @returns
+ */
 const getDynamicOptions = (arr) => {
   const [i, j] = get2Index(arr.length);
   const temp = arr[i];
@@ -25,6 +39,8 @@ const getDynamicOptions = (arr) => {
   return arr;
 };
 
+// This function is responsible for getting dynamic rended questions ready for
+// the DOM to rendering the options, I added Ids so that we can use as a key in the listing.
 export const handleOptionsForQuestion = (questions) => {
   const temp = questions.map((question, index) => {
     return {
@@ -41,6 +57,7 @@ export const handleOptionsForQuestion = (questions) => {
   return temp;
 };
 
+// This function I added for Handling question Ids and correct answerIds and in future I will use it for result count
 export const updateResponseWithIds = (question, dataSet) => {
   const obj = {};
   obj[question.id] = [];
@@ -58,6 +75,7 @@ export const updateResponseWithIds = (question, dataSet) => {
   return obj;
 };
 
+// This function is responsible for getting the no of correct answers
 export const getResultCount = (response) => {
   let tempCounter = 0;
   for (let key in response) {
@@ -72,6 +90,21 @@ export const getResultCount = (response) => {
   return tempCounter;
 };
 
+// This is bit tricky function I added for getting the proper class name based on situations
+/**
+ *
+ * @param {*binary} submit, either submitted / not
+ * @param {*} response // Response Object
+ * @param {*} uniqueId // Id
+ * @returns
+ * there are several conditions to match
+ * 1. hover condition
+ * 2. when User click
+ * 3. after submit
+ *    a. wrong answer (red)
+ *    b. correct Answer(green)
+ *    c. nad when correct answer is same as wrong answer
+ */
 export const getAppropriateClassName = (submit, response, uniqueId) => {
   const classNames = [];
 

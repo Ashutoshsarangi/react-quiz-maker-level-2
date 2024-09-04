@@ -3,9 +3,12 @@
   padding: 20px;
   display: grid;
   column-gap: 5px;
-  height: 50vh;
+  height: 60vh;
   font-size: var(--form-font-size);
   font-weight: 600;
+  overflow: scroll;
+  scroll-behavior: auto;
+  scrollbar-width: thin;
 }
 
 .segmentedButtonContainer {
