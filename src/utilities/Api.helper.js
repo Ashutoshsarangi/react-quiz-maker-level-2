@@ -1,5 +1,4 @@
-const BASE_URL = "https://opentdb.com/";
-const NO_OF_QUESTIONS = 5;
+import { NO_OF_QUESTIONS, BASE_URL } from "../App.constants";
 
 export const getAllCategory = () => {
   const url = `${BASE_URL}api_category.php`;
