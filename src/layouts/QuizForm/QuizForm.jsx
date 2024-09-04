@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
-import Button from "../../components/Button/Button";
-import DropDown from "../../components/DropDown/DropDown";
 import { DIFFICULTY_OPTIONS } from "./QuizForm.constant";
-import { getAllCategory } from "../../utilities/Api.helper";
+import { getAllCategory } from "../../utilities/Api.helpers";
 import "./QuizForm.css";
 
-const QuizForm = ({ formValue, setFormValue, clickHandle }) => {
+const QuizForm = ({
+  formValue,
+  setFormValue,
+  clickHandle,
+  submit,
+  clearForm,
+}) => {
   const [questionCategory, setQuestionCategory] = useState([]);
 
   useEffect(() => {
@@ -17,22 +21,9 @@ const QuizForm = ({ formValue, setFormValue, clickHandle }) => {
 
   return (
     <div className="quizForm">
-      {/* <DropDown
-        placeHolder="Select a category"
-        id="categorySelect"
-        options={[
-          { id: "a", name: "a" },
-          { id: "b", name: "b" },
-        ]}
-      />
-      <DropDown
-        placeHolder="Select difficulty"
-        id="difficultySelect"
-        options={DIFFICULTY_OPTIONS}
-      />
-      <Button id="createBtn" label="Create" /> */}
       <select
         value={formValue.category}
+        id="categorySelect"
         onChange={(e) =>
           setFormValue((formValue) => ({
             ...formValue,
@@ -49,6 +40,7 @@ const QuizForm = ({ formValue, setFormValue, clickHandle }) => {
       </select>
       <select
         value={formValue.difficulty}
+        id="difficultySelect"
         onChange={(e) =>
           setFormValue((formValue) => ({
             ...formValue,
@@ -63,7 +55,9 @@ const QuizForm = ({ formValue, setFormValue, clickHandle }) => {
           </option>
         ))}
       </select>
-      <button onClick={clickHandle}>create</button>
+      <button onClick={!submit ? clickHandle : clearForm} id="createBtn">
+        {!submit ? "Create" : "Clear"}
+      </button>
     </div>
   );
 };
