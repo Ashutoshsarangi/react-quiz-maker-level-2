@@ -1,8 +1,25 @@
-# React + Vite
+- **Prop Validation with TypeScript**:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+  - I am using TypeScript for prop validation, as `PropTypes` is deprecated and will be removed soon.
 
-Currently, two official plugins are available:
+- **CSS Styling**
+  - I used camelCase naming conventions for CSS classes or IDs, which is a common practice in JavaScript-centric projects.
+- **Animations**:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  - I added some basic animations, which can enhance user experience
+
+- **Code Splitting**:
+
+  - implemented code splitting to enhance readability.
+
+- **Error Handling with Try-Catch**:
+
+  - added `try-catch` blocks to handle exceptions in asynchronous code.
+
+- **Code Commenting**:
+
+  - I added code commenting understand and maintain the codebase.
+
+- **Unit Testing**:
+
+  - W.I.P.
