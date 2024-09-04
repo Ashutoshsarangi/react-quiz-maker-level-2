@@ -29,10 +29,17 @@ export const useQuizMaker = () => {
       alert("Please select both the fields");
       return;
     }
-    const questions = await getQuestions(formValue);
-    const data = handleOptionsForQuestion(questions);
+    try {
+      const questions = await getQuestions(formValue);
+      const data = handleOptionsForQuestion(questions);
 
-    setQuestions(data);
+      setQuestions(data);
+    } catch (error) {
+      console.log(
+        "Error happened, while getting Set Of Questions, please try again latter ",
+        error
+      );
+    }
   };
 
   const handleAnswerClick = (e, question) => {

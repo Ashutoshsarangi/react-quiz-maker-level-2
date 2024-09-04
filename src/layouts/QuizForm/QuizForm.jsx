@@ -14,8 +14,15 @@ const QuizForm = ({
 
   useEffect(() => {
     (async () => {
-      const getCategory = await getAllCategory();
-      setQuestionCategory(getCategory);
+      try {
+        const getCategory = await getAllCategory();
+        setQuestionCategory(getCategory);
+      } catch (error) {
+        console.log(
+          "Error happen while getting all Category information, ",
+          error
+        );
+      }
     })();
   }, []);
 
