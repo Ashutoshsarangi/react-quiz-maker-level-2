@@ -1,5 +1,14 @@
+import React from "react";
 import { NO_OF_QUESTIONS } from "../../App.constants";
 import "./Footer.css";
+
+interface FooterProps {
+  submit: boolean;
+  submitResponseHandler: () => void;
+  counter: number;
+  createNewQuizHandler: () => void;
+  responseLen: number;
+}
 
 const Footer = ({
   submit,
@@ -7,7 +16,7 @@ const Footer = ({
   counter,
   createNewQuizHandler,
   responseLen,
-}) => {
+}: FooterProps) => {
   return (
     <>
       {responseLen === NO_OF_QUESTIONS && !submit && (

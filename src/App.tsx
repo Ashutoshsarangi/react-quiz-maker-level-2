@@ -1,3 +1,4 @@
+import React from "react";
 import Header from "./layouts/Header/Header";
 import { useQuizMaker } from "./hooks/App.hooks";
 import QuizBody from "./layouts/QuizBody/QuizBody";

@@ -1,7 +1,17 @@
+import React from "react";
 import { useState, useEffect } from "react";
 import { DIFFICULTY_OPTIONS } from "./QuizForm.constant";
 import { getAllCategory } from "../../utilities/Api.helpers";
+import { FormValueInterface, CategoryInterface } from "../../App.interfaces";
 import "./QuizForm.css";
+
+interface QuizFormProps {
+  formValue: FormValueInterface;
+  setFormValue: React.Dispatch<React.SetStateAction<FormValueInterface>>;
+  clickHandle: () => void;
+  submit: boolean;
+  clearForm: () => void;
+}
 
 const QuizForm = ({
   formValue,
@@ -9,8 +19,10 @@ const QuizForm = ({
   clickHandle,
   submit,
   clearForm,
-}) => {
-  const [questionCategory, setQuestionCategory] = useState([]);
+}: QuizFormProps) => {
+  const [questionCategory, setQuestionCategory] = useState<
+    Array<CategoryInterface>
+  >([]);
 
   useEffect(() => {
     (async () => {
@@ -32,7 +44,7 @@ const QuizForm = ({
         value={formValue.category}
         id="categorySelect"
         onChange={(e) =>
-          setFormValue((formValue) => ({
+          setFormValue((formValue: FormValueInterface) => ({
             ...formValue,
             category: e.target.value,
           }))
@@ -49,7 +61,7 @@ const QuizForm = ({
         value={formValue.difficulty}
         id="difficultySelect"
         onChange={(e) =>
-          setFormValue((formValue) => ({
+          setFormValue((formValue: FormValueInterface) => ({
             ...formValue,
             difficulty: e.target.value,
           }))

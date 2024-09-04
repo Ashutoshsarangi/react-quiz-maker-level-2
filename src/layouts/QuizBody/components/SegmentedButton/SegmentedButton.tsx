@@ -1,9 +1,24 @@
+import React from "react";
 import parse from "html-react-parser";
 import { getAppropriateClassName } from "../../../../utilities/Question.helpers";
 import { ID_PREFIX } from "../../../../App.constants";
+import {
+  QuestionInterface,
+  ResponseInterface,
+} from "../../../../App.interfaces";
 import "./SegmentedButton.css";
 
-const SegmentedButton = ({ question, response, submit }) => {
+interface SegmentedButtonProps {
+  question: QuestionInterface;
+  response: ResponseInterface;
+  submit: boolean;
+}
+
+const SegmentedButton = ({
+  question,
+  response,
+  submit,
+}: SegmentedButtonProps) => {
   return (
     <>
       {question.renderOption.map((opt, index) => {

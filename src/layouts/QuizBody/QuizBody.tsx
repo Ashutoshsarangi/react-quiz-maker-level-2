@@ -1,11 +1,27 @@
+import React from "react";
 import parse from "html-react-parser";
 import SegmentedButton from "./components/SegmentedButton/SegmentedButton";
+import { QuestionInterface, ResponseInterface } from "../../App.interfaces";
 import "./QuizBody.css";
 
-const QuizBody = ({ questions, handleAnswerClick, response, submit }) => {
+interface QuizBodyProps {
+  questions: Array<QuestionInterface>;
+  handleAnswerClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    question: QuestionInterface
+  ) => void;
+  response: ResponseInterface;
+  submit: boolean;
+}
+
+const QuizBody = ({
+  questions,
+  handleAnswerClick,
+  response,
+  submit,
+}: QuizBodyProps) => {
   return (
     <div className="questionContainer">
-      {console.log(questions)}
       {questions.map((question, index) => (
         <div key={question.id}>
           {`${index + 1}. ${parse(question.question)}`}
@@ -21,7 +37,6 @@ const QuizBody = ({ questions, handleAnswerClick, response, submit }) => {
           </div>
         </div>
       ))}
-      {console.log(response)}
     </div>
   );
 };

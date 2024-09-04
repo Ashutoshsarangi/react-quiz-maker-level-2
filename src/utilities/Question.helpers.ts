@@ -4,6 +4,11 @@ import {
   CSS_RIGHT_ANSWER,
   CSS_WRONG_ANSWER,
 } from "../App.constants";
+import {
+  QuestionInterface,
+  ResponseInterface,
+  ResponseInternal,
+} from "../App.interfaces";
 
 /**
  *
@@ -11,10 +16,10 @@ import {
  * @returns
  * the random nos / indexes
  */
-const get2Index = (len) => {
-  const indexes = [];
+const get2Index = (len: number): Array<number> => {
+  const indexes: Array<number> = [];
   while (indexes.length !== 2) {
-    const idx = Math.floor(Math.random() * len);
+    const idx: number = Math.floor(Math.random() * len);
     if (indexes.indexOf(idx) < 0) {
       indexes.push(idx);
     }
@@ -30,7 +35,7 @@ const get2Index = (len) => {
  * as the indexes are always dynamic so the array will be dynamic position the answer
  * @returns
  */
-const getDynamicOptions = (arr) => {
+const getDynamicOptions = (arr: Array<string>): Array<string> => {
   const [i, j] = get2Index(arr.length);
   const temp = arr[i];
   arr[i] = arr[j];
@@ -41,7 +46,9 @@ const getDynamicOptions = (arr) => {
 
 // This function is responsible for getting dynamic rended questions ready for
 // the DOM to rendering the options, I added Ids so that we can use as a key in the listing.
-export const handleOptionsForQuestion = (questions) => {
+export const handleOptionsForQuestion = (
+  questions: Array<QuestionInterface>
+) => {
   const temp = questions.map((question, index) => {
     return {
       ...question,
@@ -53,12 +60,14 @@ export const handleOptionsForQuestion = (questions) => {
     };
   });
 
-  console.log(temp);
   return temp;
 };
 
 // This function I added for Handling question Ids and correct answerIds and in future I will use it for result count
-export const updateResponseWithIds = (question, dataSet) => {
+export const updateResponseWithIds = (
+  question: QuestionInterface,
+  dataSet: DOMStringMap
+) => {
   const obj = {};
   obj[question.id] = [];
   for (let i = 0; i < question.renderOption.length; i++) {
@@ -76,7 +85,7 @@ export const updateResponseWithIds = (question, dataSet) => {
 };
 
 // This function is responsible for getting the no of correct answers
-export const getResultCount = (response) => {
+export const getResultCount = (response: ResponseInterface): number => {
   let tempCounter = 0;
   for (let key in response) {
     const filter = response[key].filter(
@@ -93,7 +102,7 @@ export const getResultCount = (response) => {
 // This is bit tricky function I added for getting the proper class name based on situations
 /**
  *
- * @param {*binary} submit, either submitted / not
+ * @param {*} submit, either submitted / not
  * @param {*} response // Response Object
  * @param {*} uniqueId // Id
  * @returns
@@ -105,8 +114,12 @@ export const getResultCount = (response) => {
  *    b. correct Answer(green)
  *    c. nad when correct answer is same as wrong answer
  */
-export const getAppropriateClassName = (submit, response, uniqueId) => {
-  const classNames = [];
+export const getAppropriateClassName = (
+  submit: boolean,
+  response: ResponseInternal,
+  uniqueId: string
+): string => {
+  const classNames: Array<string> = [];
 
   if (submit) {
     if (response?.correctAnswerId === uniqueId) {

@@ -5,16 +5,21 @@ import {
   getResultCount,
 } from "../utilities/Question.helpers";
 import { getQuestions } from "../utilities/Api.helpers";
+import {
+  FormValueInterface,
+  QuestionInterface,
+  ResponseInterface,
+} from "../App.interfaces";
 
 export const useQuizMaker = () => {
-  const [formValue, setFormValue] = useState({
+  const [formValue, setFormValue] = useState<FormValueInterface>({
     category: "na",
     difficulty: "na",
   });
-  const [questions, setQuestions] = useState([]);
-  const [response, setResponse] = useState({});
-  const [submit, setSubmit] = useState(false);
-  const [counter, setCounter] = useState(0);
+  const [questions, setQuestions] = useState<Array<QuestionInterface>>([]);
+  const [response, setResponse] = useState<ResponseInterface>({});
+  const [submit, setSubmit] = useState<boolean>(false);
+  const [counter, setCounter] = useState<number>(0);
 
   const clearForm = () => {
     setFormValue({ category: "na", difficulty: "na" });
@@ -42,18 +47,18 @@ export const useQuizMaker = () => {
     }
   };
 
-  const handleAnswerClick = (e, question) => {
-    console.log(e, question);
-
+  const handleAnswerClick = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    question: QuestionInterface
+  ) => {
     setResponse((response) => ({
       ...response,
-      ...updateResponseWithIds(question, e.target.dataset),
+      ...updateResponseWithIds(question, (e.target as HTMLDivElement)?.dataset),
     }));
   };
 
   const submitResponseHandler = () => {
     setSubmit(true);
-    console.log(response, questions);
     setCounter(getResultCount(response));
   };
 
