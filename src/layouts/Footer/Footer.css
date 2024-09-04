@@ -1,0 +1,28 @@
+.submit {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: var(--form-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s linear;
+  width: 95vw;
+  margin: 10px;
+}
+
+.submit:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+.result {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: var(--form-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s linear;
+  margin: 10px;
+}

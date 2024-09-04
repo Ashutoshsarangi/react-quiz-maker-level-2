@@ -1,6 +1,7 @@
 import parse from "html-react-parser";
 import { getAppropriateClassName } from "../../../../utilities/Question.helpers";
 import { ID_PREFIX } from "../../../../App.constants";
+import "./SegmentedButton.css";
 
 const SegmentedButton = ({ question, response, submit }) => {
   return (
@@ -13,7 +14,7 @@ const SegmentedButton = ({ question, response, submit }) => {
             data-response={opt}
             data-response-id={uniqueId}
             id={uniqueId}
-            className={`questionContainer__options ${getAppropriateClassName(
+            className={`questionContainerOptions ${getAppropriateClassName(
               submit,
               response[question.id]?.[index],
               uniqueId

@@ -1,0 +1,24 @@
+.questionContainer {
+  margin: 10px;
+  padding: 20px;
+  display: grid;
+  column-gap: 5px;
+  height: 50vh;
+  font-size: var(--form-font-size);
+  font-weight: 600;
+}
+
+.segmentedButtonContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+  column-gap: 8px;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
+}
+
+.segmentedButtonContainer button {
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+}

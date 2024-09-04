@@ -1,0 +1,11 @@
+:root {
+  --primary-bg-color: #04a2e5;
+  --primary-color: white;
+  --secondary-bg-color: #055d2e;
+  --wrong-bg-color: #da2108;
+  --form-font-size: 1.2rem;
+}
+
+body {
+  padding: 10px;
+}

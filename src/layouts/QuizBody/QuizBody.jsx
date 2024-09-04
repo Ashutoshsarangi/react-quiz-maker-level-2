@@ -6,10 +6,13 @@ const QuizBody = ({ questions, handleAnswerClick, response, submit }) => {
   return (
     <div className="questionContainer">
       {console.log(questions)}
-      {questions.map((question) => (
+      {questions.map((question, index) => (
         <div key={question.id}>
-          {parse(question.question)}
-          <div onClick={(e) => handleAnswerClick(e, question)}>
+          {`${index + 1}. ${parse(question.question)}`}
+          <div
+            onClick={(e) => handleAnswerClick(e, question)}
+            className="segmentedButtonContainer"
+          >
             <SegmentedButton
               question={question}
               response={response}

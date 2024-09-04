@@ -1,0 +1,15 @@
+.questionContainerOptions {
+  border: 1px solid;
+  padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+}
+.questionContainerOptions:hover {
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-color);
+}
+
+.active {
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-color);
+}

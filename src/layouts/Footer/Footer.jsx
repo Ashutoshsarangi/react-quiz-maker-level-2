@@ -1,4 +1,5 @@
 import { NO_OF_QUESTIONS } from "../../App.constants";
+import "./Footer.css";
 
 const Footer = ({
   submit,
@@ -10,14 +11,18 @@ const Footer = ({
   return (
     <>
       {responseLen === NO_OF_QUESTIONS && !submit && (
-        <button onClick={submitResponseHandler}>Submit</button>
+        <button onClick={submitResponseHandler} className="submit">
+          Submit
+        </button>
       )}
       {submit && (
         <>
           <p
-            className={`${counter >= 3 ? "right__answer" : "wrong__answer"}`}
+            className={`result ${counter >= 3 ? "rightAnswer" : "wrongAnswer"}`}
           >{`You Scored ${counter} out of ${NO_OF_QUESTIONS}`}</p>
-          <button onClick={createNewQuizHandler}>Create a new Quiz</button>
+          <button onClick={createNewQuizHandler} className="submit">
+            Create a new Quiz
+          </button>
         </>
       )}
     </>

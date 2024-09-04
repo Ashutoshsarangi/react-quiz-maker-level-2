@@ -1,4 +1,9 @@
-import { ID_PREFIX } from "../App.constants";
+import {
+  ID_PREFIX,
+  CSS_ACTIVE,
+  CSS_RIGHT_ANSWER,
+  CSS_WRONG_ANSWER,
+} from "../App.constants";
 
 const get2Index = (len) => {
   const indexes = [];
@@ -72,17 +77,17 @@ export const getAppropriateClassName = (submit, response, uniqueId) => {
 
   if (submit) {
     if (response?.correctAnswerId === uniqueId) {
-      classNames.push("active");
+      classNames.push(CSS_ACTIVE);
     }
     if (response?.userAnswerId === uniqueId) {
-      classNames.push("wrong__answer");
+      classNames.push(CSS_WRONG_ANSWER);
     }
     if (response?.userAnswerId === response?.correctAnswerId) {
-      classNames.push("right__answer");
+      classNames.push(CSS_RIGHT_ANSWER);
     }
   } else {
     if (response?.userAnswerId === uniqueId) {
-      classNames.push("active");
+      classNames.push(CSS_ACTIVE);
     }
   }
   return classNames.join(" ");

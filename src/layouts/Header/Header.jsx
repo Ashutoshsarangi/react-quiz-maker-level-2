@@ -1,9 +1,7 @@
+import "./Header.css";
+
 const Header = ({ submit }) => {
-  return (
-    <div>
-      <h1>{submit ? "RESULTS" : "QUIZ MAKER"}</h1>
-    </div>
-  );
+  return <h1 className="header">{submit ? "RESULTS" : "QUIZ MAKER"}</h1>;
 };
 
 export default Header;

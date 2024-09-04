@@ -1,5 +1,29 @@
 .quizForm {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 200px 100px;
+  column-gap: 5px;
+}
+
+.quizForm select {
+  padding: 10px;
+  border-radius: 5px;
+  font-size: var(--form-font-size);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.quizForm button {
+  background-color: var(--primary-bg-color);
+  color: var(--primary-color);
+  padding: 10px;
+  border-radius: 5px;
+  font-size: var(--form-font-size);
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s linear;
+}
+
+.quizForm button:hover {
+  background-color: var(--secondary-bg-color);
 }
