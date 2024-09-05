@@ -8,6 +8,7 @@ import {
   QuestionInterface,
   ResponseInterface,
   ResponseInternal,
+  QuestionOriginalInterface,
 } from "../App.interfaces";
 
 /**
@@ -16,7 +17,7 @@ import {
  * @returns
  * the random nos / indexes
  */
-const get2Index = (len: number): Array<number> => {
+export const get2Index = (len: number): Array<number> => {
   const indexes: Array<number> = [];
   while (indexes.length !== 2) {
     const idx: number = Math.floor(Math.random() * len);
@@ -35,7 +36,7 @@ const get2Index = (len: number): Array<number> => {
  * as the indexes are always dynamic so the array will be dynamic position the answer
  * @returns
  */
-const getDynamicOptions = (arr: Array<string>): Array<string> => {
+export const getDynamicOptions = (arr: Array<string>): Array<string> => {
   const [i, j] = get2Index(arr.length);
   const temp = arr[i];
   arr[i] = arr[j];
@@ -47,7 +48,7 @@ const getDynamicOptions = (arr: Array<string>): Array<string> => {
 // This function is responsible for getting dynamic rended questions ready for
 // the DOM to rendering the options, I added Ids so that we can use as a key in the listing.
 export const handleOptionsForQuestion = (
-  questions: Array<QuestionInterface>
+  questions: Array<QuestionOriginalInterface>
 ) => {
   const temp = questions.map((question, index) => {
     return {
@@ -119,22 +120,20 @@ export const getAppropriateClassName = (
   response: ResponseInternal,
   uniqueId: string
 ): string => {
-  const classNames: Array<string> = [];
-
   if (submit) {
-    if (response?.correctAnswerId === uniqueId) {
-      classNames.push(CSS_ACTIVE);
+    if (response?.userAnswerId === response?.correctAnswerId) {
+      return CSS_ACTIVE;
     }
     if (response?.userAnswerId === uniqueId) {
-      classNames.push(CSS_WRONG_ANSWER);
+      return CSS_WRONG_ANSWER;
     }
-    if (response?.userAnswerId === response?.correctAnswerId) {
-      classNames.push(CSS_RIGHT_ANSWER);
+    if (response?.correctAnswerId === uniqueId) {
+      return CSS_ACTIVE;
     }
   } else {
     if (response?.userAnswerId === uniqueId) {
-      classNames.push(CSS_ACTIVE);
+      return CSS_ACTIVE;
     }
   }
-  return classNames.join(" ");
+  return "";
 };

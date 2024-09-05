@@ -1,10 +1,13 @@
-export interface QuestionInterface {
+export interface QuestionOriginalInterface {
   type: string;
   difficulty: string;
   category: string;
   question: string;
   correct_answer: string;
   incorrect_answers: Array<string>;
+}
+
+export interface QuestionInterface extends QuestionOriginalInterface {
   renderOption: Array<string>;
   id: string;
 }
