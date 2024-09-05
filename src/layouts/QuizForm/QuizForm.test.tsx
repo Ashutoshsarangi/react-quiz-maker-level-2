@@ -42,17 +42,5 @@ describe("QuizForm Component", () => {
       expect(createBtn.textContent).toBe("Create");
       expect(props.clickHandle).toHaveBeenCalled();
     });
-
-    it("QuizForm Component When change the category drop down", () => {
-      const updatedProp = {
-        ...props,
-        submit: true,
-      };
-      render(<QuizForm {...updatedProp} />);
-      const createBtn = screen.getByTestId("createBtn");
-      fireEvent.click(createBtn);
-      expect(createBtn.textContent).toBe("Clear");
-      expect(updatedProp.clearForm).toHaveBeenCalled();
-    });
   });
 });

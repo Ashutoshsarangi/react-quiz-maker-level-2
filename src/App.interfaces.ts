@@ -31,3 +31,19 @@ export interface CategoryInterface {
   name: string;
   id: string;
 }
+
+export interface QuizContextInterface {
+  formValue: FormValueInterface;
+  setFormValue: React.Dispatch<React.SetStateAction<FormValueInterface>>;
+  questions: Array<QuestionInterface>;
+  response: ResponseInterface;
+  submit: boolean;
+  counter: number;
+  clickHandle: () => void;
+  submitResponseHandler: () => void;
+  handleAnswerClick: (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    question: QuestionInterface
+  ) => void;
+  clearForm: () => void;
+}

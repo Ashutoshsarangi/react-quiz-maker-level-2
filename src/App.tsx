@@ -5,6 +5,13 @@ import QuizBody from "./layouts/QuizBody/QuizBody";
 import QuizForm from "./layouts/QuizForm/QuizForm";
 import Footer from "./layouts/Footer/Footer";
 import "./App.css";
+import { Outlet, useOutletContext } from "react-router";
+import {
+  FormValueInterface,
+  QuestionInterface,
+  ResponseInterface,
+  QuizContextInterface,
+} from "./App.interfaces";
 
 function App() {
   const {
@@ -23,21 +30,22 @@ function App() {
   return (
     <>
       <Header submit={submit} />
-      <div>
-        <QuizForm
-          formValue={formValue}
-          setFormValue={setFormValue}
-          clickHandle={clickHandle}
-          submit={submit}
-          clearForm={clearForm}
-        />
-        <QuizBody
-          questions={questions}
-          handleAnswerClick={handleAnswerClick}
-          response={response}
-          submit={submit}
-        />
-      </div>
+      <Outlet
+        context={
+          {
+            formValue,
+            setFormValue,
+            questions,
+            response,
+            submit,
+            counter,
+            clickHandle,
+            submitResponseHandler,
+            handleAnswerClick,
+            clearForm,
+          } satisfies QuizContextInterface
+        }
+      />
       <Footer
         submit={submit}
         submitResponseHandler={submitResponseHandler}

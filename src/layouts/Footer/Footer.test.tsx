@@ -1,6 +1,7 @@
 import React from "react";
 import { describe, it, expect, afterEach, vi } from "vitest";
 import { render, cleanup, screen, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router-dom";
 import { NO_OF_QUESTIONS } from "../../App.constants";
 
 import Footer from "./Footer";
@@ -19,11 +20,19 @@ describe("Footer Component", () => {
     });
 
     it("Footer Component Rendered Successfully", () => {
-      render(<Footer {...props} />);
+      render(
+        <MemoryRouter>
+          <Footer {...props} />
+        </MemoryRouter>
+      );
     });
 
     it("when we click submit button", () => {
-      render(<Footer {...props} />);
+      render(
+        <MemoryRouter>
+          <Footer {...props} />
+        </MemoryRouter>
+      );
       const submitButton = screen.getByTestId("footerSubmitBtn");
       fireEvent.click(submitButton);
       expect(props.submitResponseHandler).toHaveBeenCalledOnce();
@@ -34,16 +43,24 @@ describe("Footer Component", () => {
         ...props,
         submit: true,
       };
-      render(<Footer {...updatedProps} />);
+      render(
+        <MemoryRouter>
+          <Footer {...updatedProps} />
+        </MemoryRouter>
+      );
       const submitButton = screen.getByTestId("footerSubmitBtn");
     });
 
-    it("when will not get the Submit button", () => {
+    it("It will get the Result Banner with different color Background", () => {
       const updatedProps = {
         ...props,
         submit: true,
       };
-      render(<Footer {...updatedProps} />);
+      render(
+        <MemoryRouter>
+          <Footer {...updatedProps} />
+        </MemoryRouter>
+      );
       const result = screen.getByTestId("footerResult");
       const createNewQuiz = screen.getByTestId("footerCreateNewQuiz");
       expect(result.textContent).toBe(

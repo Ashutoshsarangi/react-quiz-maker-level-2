@@ -6,7 +6,7 @@ import "./QuizBody.css";
 
 interface QuizBodyProps {
   questions: Array<QuestionInterface>;
-  handleAnswerClick: (
+  handleAnswerClick?: (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
     question: QuestionInterface
   ) => void;
@@ -26,7 +26,7 @@ const QuizBody = ({
         <div key={question.id}>
           {`${index + 1}. ${parse(question.question)}`}
           <div
-            onClick={(e) => handleAnswerClick(e, question)}
+            onClick={(e) => handleAnswerClick && handleAnswerClick(e, question)}
             className="segmentedButtonContainer"
             data-testid="segmentedBtnDelegation"
           >

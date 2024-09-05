@@ -1,3 +1,7 @@
+.warningAnswer {
+  background-color: var(--third-bg-color);
+  color: var(--third-color);
+}
 .wrongAnswer {
   background-color: var(--wrong-bg-color);
   color: var(--primary-color);

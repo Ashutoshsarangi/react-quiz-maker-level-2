@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { NO_OF_QUESTIONS } from "../../App.constants";
 import "./Footer.css";
 
@@ -17,11 +18,23 @@ const Footer = ({
   createNewQuizHandler,
   responseLen,
 }: FooterProps) => {
+  const navigate = useNavigate();
+
+  const handleSubmitClick = () => {
+    submitResponseHandler();
+    navigate("/result");
+  };
+
+  const newQuizHandler = () => {
+    createNewQuizHandler();
+    navigate("/");
+  };
+
   return (
     <>
       {responseLen === NO_OF_QUESTIONS && !submit && (
         <button
-          onClick={submitResponseHandler}
+          onClick={handleSubmitClick}
           className="submit"
           data-testid="footerSubmitBtn"
         >
@@ -31,11 +44,13 @@ const Footer = ({
       {submit && (
         <>
           <p
-            className={`result ${counter >= 3 ? "rightAnswer" : "wrongAnswer"}`}
+            className={`result ${counter > 3 && "rightAnswer"} ${
+              (counter > 1 || counter <= 3) && "warningAnswer"
+            } ${counter <= 1 && "wrongAnswer"} `}
             data-testid="footerResult"
           >{`You Scored ${counter} out of ${NO_OF_QUESTIONS}`}</p>
           <button
-            onClick={createNewQuizHandler}
+            onClick={newQuizHandler}
             className="submit"
             data-testid="footerCreateNewQuiz"
           >

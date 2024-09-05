@@ -9,17 +9,9 @@ interface QuizFormProps {
   formValue: FormValueInterface;
   setFormValue: React.Dispatch<React.SetStateAction<FormValueInterface>>;
   clickHandle: () => void;
-  submit: boolean;
-  clearForm: () => void;
 }
 
-const QuizForm = ({
-  formValue,
-  setFormValue,
-  clickHandle,
-  submit,
-  clearForm,
-}: QuizFormProps) => {
+const QuizForm = ({ formValue, setFormValue, clickHandle }: QuizFormProps) => {
   const [questionCategory, setQuestionCategory] = useState<
     Array<CategoryInterface>
   >([]);
@@ -76,12 +68,8 @@ const QuizForm = ({
           </option>
         ))}
       </select>
-      <button
-        onClick={!submit ? clickHandle : clearForm}
-        id="createBtn"
-        data-testid="createBtn"
-      >
-        {!submit ? "Create" : "Clear"}
+      <button onClick={clickHandle} id="createBtn" data-testid="createBtn">
+        Create
       </button>
     </div>
   );
