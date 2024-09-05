@@ -6,7 +6,11 @@ interface HeaderProps {
 }
 
 const Header = ({ submit }: HeaderProps) => (
-  <h1 className="header" aria-label={submit ? "RESULTS" : "QUIZ MAKER"}>
+  <h1
+    className="header"
+    aria-label={submit ? "RESULTS" : "QUIZ MAKER"}
+    data-testid="headerTitle"
+  >
     {submit ? "RESULTS" : "QUIZ MAKER"}
   </h1>
 );

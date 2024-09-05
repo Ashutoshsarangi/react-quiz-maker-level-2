@@ -43,6 +43,7 @@ const QuizForm = ({
       <select
         value={formValue.category}
         id="categorySelect"
+        data-testid="categorySelect"
         onChange={(e) =>
           setFormValue((formValue: FormValueInterface) => ({
             ...formValue,
@@ -60,6 +61,7 @@ const QuizForm = ({
       <select
         value={formValue.difficulty}
         id="difficultySelect"
+        data-testid="difficultySelect"
         onChange={(e) =>
           setFormValue((formValue: FormValueInterface) => ({
             ...formValue,
@@ -74,7 +76,11 @@ const QuizForm = ({
           </option>
         ))}
       </select>
-      <button onClick={!submit ? clickHandle : clearForm} id="createBtn">
+      <button
+        onClick={!submit ? clickHandle : clearForm}
+        id="createBtn"
+        data-testid="createBtn"
+      >
         {!submit ? "Create" : "Clear"}
       </button>
     </div>

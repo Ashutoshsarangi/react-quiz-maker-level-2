@@ -28,6 +28,7 @@ const QuizBody = ({
           <div
             onClick={(e) => handleAnswerClick(e, question)}
             className="segmentedButtonContainer"
+            data-testid="segmentedBtnDelegation"
           >
             <SegmentedButton
               question={question}

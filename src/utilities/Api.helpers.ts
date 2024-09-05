@@ -7,7 +7,6 @@ import {
 
 // This is for getting the Category for the Questions
 export const getAllCategory = (): Promise<Array<CategoryInterface>> => {
-  console.log("I am Inside");
   const url = `${BASE_URL}api_category.php`;
   return fetch(url)
     .then((data) => data.json())

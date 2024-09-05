@@ -20,7 +20,11 @@ const Footer = ({
   return (
     <>
       {responseLen === NO_OF_QUESTIONS && !submit && (
-        <button onClick={submitResponseHandler} className="submit">
+        <button
+          onClick={submitResponseHandler}
+          className="submit"
+          data-testid="footerSubmitBtn"
+        >
           Submit
         </button>
       )}
@@ -28,8 +32,13 @@ const Footer = ({
         <>
           <p
             className={`result ${counter >= 3 ? "rightAnswer" : "wrongAnswer"}`}
+            data-testid="footerResult"
           >{`You Scored ${counter} out of ${NO_OF_QUESTIONS}`}</p>
-          <button onClick={createNewQuizHandler} className="submit">
+          <button
+            onClick={createNewQuizHandler}
+            className="submit"
+            data-testid="footerCreateNewQuiz"
+          >
             Create a new Quiz
           </button>
         </>
